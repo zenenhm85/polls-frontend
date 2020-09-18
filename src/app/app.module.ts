@@ -4,14 +4,16 @@ import {AppRoutingModule} from './app-routing.module';
 import {PagesModule} from './pages/pages.module';
 import {AuthModule} from './auth/auth.module';
 
+
 import { AppComponent } from './app.component';
 import { NotfoundpageComponent } from './notfoundpage/notfoundpage.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotfoundpageComponent          
+    NotfoundpageComponent    
   ],
   imports: [
     BrowserModule,
