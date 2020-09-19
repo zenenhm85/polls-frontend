@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SignUpForm } from '../interfaces/signup.interface';
 import { LoginForm } from '../interfaces/login-form.interface';
+import { UpdateProfileForm } from '../interfaces/update-profile.interface';
 import { User } from '../models/user.model';
 
 const url = environment.url;
@@ -61,5 +62,45 @@ export class UserService {
       }),
       catchError((error) => of(false))
     );
+  }
+
+  updateProfile(formData: UpdateProfileForm) {
+    return this.http.put(`${url}/users/${this.id}`, formData, this.headers);
+  }
+
+  changePassword(formData: SignUpForm) {
+    return this.http.post(
+      `${url}/login/change-password`,
+      formData,
+      this.headers
+    );
+  }
+
+  async updatePicture(picture: File, id: string) {
+    try {
+      const route = `${url}/users/upload/${id}`;
+      const formData = new FormData();
+      formData.append('img', picture);
+
+      const resp = await fetch(route, {
+        method: 'PUT',
+        headers: {
+          'x-token': this.token,
+        },
+        body: formData,
+      });
+
+      const data = await resp.json();
+
+      if (data.ok) {
+        return data.fileName;
+      } else {
+        console.log(data.message);
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
 }

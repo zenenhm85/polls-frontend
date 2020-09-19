@@ -69,7 +69,7 @@ export class SignupComponent {
       if (pass1Control.value === pass2Control.value) {
         pass2Control.setErrors(null);
       } else {
-        pass2Control.setErrors({ noEsIgual: true });
+        pass2Control.setErrors({ notEquals: true });
       }
     };
   }

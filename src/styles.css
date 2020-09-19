@@ -7,3 +7,17 @@
 .cursorpointer{
     cursor: pointer;
 }
+.center-all{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.profile-card{
+    max-height: 12.8rem;
+    max-width: 12.8rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
