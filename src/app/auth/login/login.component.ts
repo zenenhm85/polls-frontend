@@ -1,33 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
-import { UserService } from '../../services/user.service'
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
 
   public loginForm = this.fb.group({
-    email: [localStorage.getItem('email') || '', [Validators.required, Validators.email]],
+    email: [
+      localStorage.getItem('email') || '',
+      [Validators.required, Validators.email],
+    ],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    remember: [false]
+    remember: [false],
   });
 
-  constructor(private router: Router, private fb: FormBuilder, private userService:UserService) { }
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private userService: UserService
+  ) {}
 
-  ngOnInit(): void {
-  }
-  login(){
+
+  login() {
     if (this.loginForm.invalid) {
       Swal.fire('Error', 'Incorrect email or password', 'error');
       return;
     }
-    this.router.navigateByUrl('dashboard');
-  }
 
+    this.userService.login(this.loginForm.value).subscribe(
+      (res) => {
+        this.router.navigateByUrl('dashboard');
+
+        if (this.loginForm.get('remember').value) {
+          localStorage.setItem('email', this.loginForm.get('email').value);
+        } else {
+          localStorage.removeItem('email');
+        }
+      },
+      (err) => {
+        Swal.fire('Error', err.error.message, 'error');
+      }
+    );
+  }
 }
