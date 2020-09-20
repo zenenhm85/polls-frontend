@@ -55,19 +55,13 @@
                   <th class="text-center w5">
                     <span class="font-weight-bold">Avatar</span>
                   </th>
-                  <th class="text-center w30">
+                  <th class="text-center w40">
                     <span class="font-weight-bold">Name</span>
                   </th>
-                  <th class="text-center w30">
+                  <th class="text-center w40">
                     <span class="font-weight-bold">Email</span>
                   </th>
                   <th class="text-center w15">
-                    <span class="font-weight-bold">Role</span>
-                  </th>
-                  <th class="text-center w10">
-                    <span class="font-weight-bold">Active</span>
-                  </th>
-                  <th class="text-center w10">
                     <span class="font-weight-bold">Actions</span>
                   </th>
                 </tr>
@@ -81,33 +75,10 @@
                       class="img-responsive mx-auto zd-block imgtable img-circle"
                     />
                   </td>
-                  <td class="text-center w30">{{ user.name }}</td>
-                  <td class="text-center w30">{{ user.email }}</td>
+                  <td class="text-center w40">{{ user.name }}</td>
+                  <td class="text-center w40">{{ user.email }}</td>
 
-                  <td class="text-center w15">
-                    <select
-                      class="form-control"
-                      [(ngModel)]="user.role"
-                      (change)="changeRole(user)"
-                    >
-                      <option value="ADMIN_ROLE">Admin</option>
-                      <option value="ADVUSER_ROLE">Super User</option>
-                      <option value="USER_ROLE">User</option>
-                    </select>
-                  </td>
-
-                  <td class="text-center w10">
-                    <select
-                      class="form-control"
-                      [(ngModel)]="user.active"
-                      (change)="changeActive(user)"
-                    >
-                      <option value="true">Yes</option>
-                      <option value="false">No</option>
-                    </select>
-                  </td>
-
-                  <td class="text-nowrap text-center w10">
+                  <td class="text-nowrap text-center w15">
                     <a
                       *ngIf="userLogin.id !== user.id"
                       class="cursorpointer"
@@ -121,7 +92,9 @@
                     <a
                       class="cursorpointer"
                       data-toggle="modal"
+                      data-target="#myModalRight"
                       data-original-title="View"
+                      (click)="getUser(user)"
                     >
                       <i class="fa fa-eye text-info m-r-10"></i>
                     </a>
@@ -235,3 +208,11 @@
     </div>
   </div>
 </div>
+
+<!-- 
+  Modal Right
+-->
+
+<app-rightmodaluser [idModal]="'myModalRight'" [user]="user">
+
+</app-rightmodaluser>

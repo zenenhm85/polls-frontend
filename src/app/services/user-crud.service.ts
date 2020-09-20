@@ -77,4 +77,9 @@ export class UserCrudService {
       })
     );
   }
+  updateRoleAndActive(user: User) {
+
+    return this.http.put(`${url}/users/${user.id}`, user, this.headers);
+    
+  }
 }

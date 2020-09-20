@@ -61,7 +61,9 @@ export class UsersComponent implements OnInit {
     this.getUsers(0, this.quantityShow, true,1);
   }
 
-  changeRole(user: User) {}
+  changeRole(user: User) {
+    
+  }
 
   getUser(user: User) {
     this.user = user;
