@@ -21,7 +21,7 @@ const routes: Routes = [
             { path: '', component: DashboardComponent, data:{title: 'Dashboard'} },
             {path:'account-setting',component: AccountSettingComponent, data:{title: 'Themes'} }, 
             {path:'profile',component: ProfileComponent, data:{title: 'User Profile'} },
-            {path:'users',component: UsersComponent, data:{title: 'Users'} },  
+            {path:'users',component: UsersComponent, data:{title: 'Users'}},  
             {path:'polls',component: PollsComponent, data:{title: 'Poll'} },                       
           ]
       },   

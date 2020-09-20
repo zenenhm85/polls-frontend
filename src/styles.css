@@ -21,3 +21,23 @@
     justify-content: center;
     text-align: center;
 }
+.imgtable{
+    max-height: 2rem;
+    max-width: 2rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.w5{
+    width: 5%;
+}
+.w10{
+    width: 10%;
+}
+.w15{
+    width: 15%;
+}
+.w30{
+    width: 30%;
+}
