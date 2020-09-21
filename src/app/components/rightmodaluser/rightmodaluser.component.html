@@ -13,7 +13,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>
+        <p *ngIf="user.imageUrl">
           <img
             [src]="user.imageUrl"
             alt="Avatar of User"

@@ -30,7 +30,7 @@ const routes: Routes = [
         data: { title: 'User Profile' },
       },
       { path: 'users', component: UsersComponent, canActivate:[AdminGuard], data: { title: 'Users' } },
-      { path: 'polls', component: PollsComponent, canActivate:[SuperuserGuard],data: { title: 'Poll' } },
+      { path: 'polls', component: PollsComponent, canActivate:[SuperuserGuard],data: { title: 'Polls' } },
     ],
   },
 ];

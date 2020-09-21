@@ -1,0 +1,59 @@
+<div [id]="idModal" class="modal fade modal-right" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Poll information</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <h3 class="card-title text-center">{{ poll.question }}</h3>
+          <div *ngFor="let answer of poll.answersWithPercent">
+            <h5 class="m-t-30">
+              {{ answer.value }} ({{ answer.votes }})<span class="pull-right"
+                >{{ answer.percent }}%</span
+              >
+            </h5>
+            <div class="progress">
+              <div
+                class="progress-bar bg-info progress-bar-striped wow animated progress-animated"
+                [ngStyle]="{ width: answer.percent + '%' }"
+                style="height: 10px"
+                role="progressbar"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-md-12 text-center">
+          <button
+            *ngIf="poll.closed"
+            type="button"
+            class="btn waves-effect waves-light btn-danger"
+          >
+            Closed
+          </button>
+          <button
+            *ngIf="!poll.closed"
+            type="button"
+            class="btn waves-effect waves-light btn-success"
+          >
+            Open
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

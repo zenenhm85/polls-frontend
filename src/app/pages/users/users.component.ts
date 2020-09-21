@@ -18,7 +18,7 @@ export class UsersComponent implements OnInit {
   public searching: boolean = false;
 
   public users: User[] = [];
-  public user: User;
+  public user: User = new User(true,'','','','','','');
   public userLogin: User;
 
   constructor(
@@ -60,10 +60,7 @@ export class UsersComponent implements OnInit {
   changeQuantity() {
     this.getUsers(0, this.quantityShow, true,1);
   }
-
-  changeRole(user: User) {
-    
-  }
+  
 
   getUser(user: User) {
     this.user = user;
@@ -93,8 +90,7 @@ export class UsersComponent implements OnInit {
       1
     );
   }
-
-  changeActive(user: User) {}
+ 
 
   deleteUser() {
     this.userCrudService.deleteUser(this.user.id).subscribe((resp) => {
