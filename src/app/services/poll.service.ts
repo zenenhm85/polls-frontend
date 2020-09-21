@@ -44,7 +44,23 @@ export class PollService {
       })
     );
   }
+  getPollsAll() {
+    const route = `${url}/polls`;
 
+    return this.http.get<GetPolls>(route, this.headers).pipe(
+      map((resp) => {
+        const polls = resp.polls.map((poll) => {
+          return new Poll(poll.question, poll.answers, poll.closed, poll.id);
+        });
+
+        return {
+          total: resp.total,
+          polls,
+        };
+      })
+    );
+  }
+  
   deletePoll(id: string) {
     const route = `${url}/polls/${id}`;
     return this.http.delete(route, this.headers);

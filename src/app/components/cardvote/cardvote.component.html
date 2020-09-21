@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title text-center">{{ poll.question }}</h4>
+
+    <div *ngIf="edited" class="notify">
+      <span class="heartbit"></span> <span class="point"></span>
+    </div>
+
+    <br />
+    <div class="form-group text-center" *ngIf="(!readyVote || edited) && !poll.closed">
+      <label class="control-label">Answers:</label>
+      <select
+        class="form-control custom-select"
+        tabindex="1"
+        (click)="Vote()"
+        [(ngModel)]="vote.vote"
+      >
+        <option *ngFor="let answer of poll.answers" value="answer.value">
+          {{ answer.value }}
+        </option>
+      </select>
+    </div>
+    <div *ngIf="readyVote && !edited">
+      <div *ngFor="let answer of poll.answersWithPercent">
+        <h5 class="m-t-30">
+          {{ answer.value }} ({{ answer.votes }})<span class="pull-right"
+            >{{ answer.percent }}%</span
+          >
+        </h5>
+        <div class="progress">
+          <div
+            class="progress-bar bg-info progress-bar-striped wow animated progress-animated"
+            [ngStyle]="{ width: answer.percent + '%' }"
+            style="height: 10px"
+            role="progressbar"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="poll.closed">
+      <div *ngFor="let answer of poll.answersWithPercent">
+        <h5 class="m-t-30">
+          {{ answer.value }} ({{ answer.votes }})<span class="pull-right"
+            >{{ answer.percent }}%</span
+          >
+        </h5>
+        <div class="progress">
+          <div
+            class="progress-bar bg-info progress-bar-striped wow animated progress-animated"
+            [ngStyle]="{ width: answer.percent + '%' }"
+            style="height: 10px"
+            role="progressbar"
+          ></div>
+        </div>
+      </div>
+      <button        
+        type="button"
+        class="btn waves-effect waves-light btn-danger"
+      >
+        Closed
+      </button>
+    </div>
+  </div>
+</div>

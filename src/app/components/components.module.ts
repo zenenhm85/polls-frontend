@@ -6,12 +6,13 @@ import { RightmodaluserComponent } from './rightmodaluser/rightmodaluser.compone
 import { AddpollComponent } from './addpoll/addpoll.component';
 import { InfopollComponent } from './infopoll/infopoll.component';
 import { EditpollComponent } from './editpoll/editpoll.component';
+import { CardvoteComponent } from './cardvote/cardvote.component';
 
 
 
 
 @NgModule({
-  declarations: [RightmodaluserComponent, AddpollComponent, InfopollComponent, EditpollComponent],
+  declarations: [RightmodaluserComponent, AddpollComponent, InfopollComponent, EditpollComponent, CardvoteComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,7 +22,8 @@ import { EditpollComponent } from './editpoll/editpoll.component';
     RightmodaluserComponent,
     AddpollComponent,
     InfopollComponent,
-    EditpollComponent
+    EditpollComponent,
+    CardvoteComponent
   ]
 })
 export class ComponentsModule { }

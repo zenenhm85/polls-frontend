@@ -10,10 +10,11 @@ import { NotfoundpageComponent } from './notfoundpage/notfoundpage.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    NotfoundpageComponent    
+    NotfoundpageComponent      
   ],
   imports: [
     BrowserModule,
